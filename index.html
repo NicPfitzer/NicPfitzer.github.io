@@ -5,10 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nicolas Pfitzer – CV and Portfolio</title>
   <meta name="description" content="CV and portfolio of Nicolas Pfitzer (Robotics & ML)." />
+  <meta name="color-scheme" content="dark light" />
+  <meta property="og:title" content="Nicolas Pfitzer – CV and Portfolio" />
+  <meta property="og:description" content="Robotics and ML engineer focused on RL, vision, and embedded systems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/avatar.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nicolas Pfitzer – CV and Portfolio" />
+  <meta name="twitter:description" content="Robotics and ML engineer focused on RL, vision, and embedded systems." />
+  <meta name="twitter:image" content="images/avatar.jpg" />
   <link rel="icon" href="data:," />
+  <link rel="preload" as="image" href="images/cartell.png" />
   <style>
     :root{
       --bg:#0f172a; --card:#0b1220; --text:#e5e7eb; --muted:#94a3b8; --acc:#38bdf8; --border:#1e293b;
+    }
+    [data-theme="light"]{
+      --bg:#ffffff; --card:#f8fafc; --text:#0f172a; --muted:#475569; --acc:#0ea5e9; --border:#e2e8f0;
     }
     *{box-sizing:border-box}
     body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;background:var(--bg);color:var(--text)}
@@ -36,6 +49,8 @@
     footer{color:var(--muted);text-align:center;margin:28px 0 8px}
     .badge{font-size:.85rem;color:var(--muted)}
     .avatar{width:72px;height:72px;border-radius:50%;background:#222;border:1px solid var(--border);object-fit:cover}
+  .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+  .skip-link:focus{left:12px;top:12px;width:auto;height:auto;padding:8px 12px;background:var(--card);border:1px solid var(--acc);border-radius:8px;z-index:999}
   .gallery-slider { position: relative; width: 100%; max-width: 700px; margin: 0 auto 12px auto; }
   .gallery-track { display: flex; transition: transform 0.5s cubic-bezier(.7,0,.3,1); height: 100%; }
   .gallery-slider figure { margin: 0 16px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; flex: 0 0 80%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
@@ -45,9 +60,15 @@
   .gallery-prev { left: 0; }
   .gallery-next { right: 0; }
   .gallery-prev[disabled], .gallery-next[disabled] { opacity: 0.3; cursor: default; }
+  @media print{
+    body{background:#fff;color:#000}
+    header, nav, #gallery{display:none}
+    section{border:none}
+  }
   </style>
 </head>
 <body>
+  <a href="#about" class="skip-link">Skip to content</a>
   <div class="wrap">
     <header>
       <div class="id">
@@ -63,7 +84,7 @@
           <div class="badge">Swiss & US citizen • Last updated: September 2025</div>
         </div>
       </div>
-      <nav>
+      <nav aria-label="Primary">
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
@@ -71,6 +92,7 @@
         <a href="#publications">Publications</a>
         <a href="Simple_CV-3.pdf" download>Download CV (PDF)</a>
       </nav>
+      <button id="theme-toggle" class="cta" type="button" aria-pressed="false" aria-label="Toggle color theme">Toggle theme</button>
     </header>
 
     <div class="grid">
@@ -165,9 +187,9 @@
 
         <section id="gallery">
           <h2>Gallery</h2>
-          <div class="gallery">
+          <div class="gallery" aria-label="Project gallery">
             <figure>
-              <img loading="lazy" src="images/cartell.png" alt="" />
+              <img loading="eager" fetchpriority="high" src="images/cartell.png" alt="" />
               <figcaption>AUTOMATA-BASED REASONING AND COLLABORATION FOR ROBOT TEAMS</figcaption>
             </figure>
             <figure>
@@ -283,6 +305,43 @@
     </footer>
   </div>
   <script src="gallery-slider.js"></script>
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
-</body>
+  <script>
+    // Year badge
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // Theme toggle with localStorage persistence
+    (function(){
+      const btn = document.getElementById('theme-toggle');
+      const root = document.documentElement;
+      const stored = localStorage.getItem('theme');
+      if (stored === 'light') root.setAttribute('data-theme','light');
+      const isLight = () => root.getAttribute('data-theme') === 'light';
+      const apply = (light) => {
+        if (light) { root.setAttribute('data-theme','light'); btn.setAttribute('aria-pressed','true'); }
+        else { root.removeAttribute('data-theme'); btn.setAttribute('aria-pressed','false'); }
+      };
+      btn.addEventListener('click', () => {
+        const next = !isLight();
+        apply(next);
+        localStorage.setItem('theme', next ? 'light' : 'dark');
+      });
+      // Initialize ARIA state
+      btn.setAttribute('aria-pressed', String(isLight()));
+    })();
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nicolas Pfitzer",
+    "jobTitle": "Robotics and ML Engineer",
+    "url": "/",
+    "email": "mailto:nicolas@pfitzer.org",
+    "image": "images/avatar.jpg",
+    "sameAs": [
+      "https://linkedin.com/in/nicolas-pfitzer",
+      "https://github.com/NicPfitzer"
+    ]
+  }
+  </script>
+  </body>
 </html>

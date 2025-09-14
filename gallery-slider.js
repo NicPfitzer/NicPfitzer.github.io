@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
   slider.style.width = '100%';
   // Height will be set dynamically based on first image aspect ratio
   slider.style.height = 'auto';
+  slider.setAttribute('role', 'region');
+  slider.setAttribute('aria-label', 'Project gallery slider');
+  slider.tabIndex = 0; // focusable for keyboard control
 
   // Create track
   const track = document.createElement('div');
@@ -46,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const prev = document.createElement('button');
   prev.textContent = '‹';
   prev.className = 'gallery-prev';
+  prev.setAttribute('aria-label', 'Previous slide');
   prev.style.position = 'absolute';
   prev.style.left = '0';
   prev.style.top = '50%';
@@ -62,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const next = document.createElement('button');
   next.textContent = '›';
   next.className = 'gallery-next';
+  next.setAttribute('aria-label', 'Next slide');
   next.style.position = 'absolute';
   next.style.right = '0';
   next.style.top = '50%';
@@ -81,6 +86,9 @@ document.addEventListener('DOMContentLoaded', function () {
     next.disabled = current === figures.length - 1;
     prev.style.opacity = prev.disabled ? '0.3' : '1';
     next.style.opacity = next.disabled ? '0.3' : '1';
+    prev.setAttribute('aria-disabled', String(prev.disabled));
+    next.setAttribute('aria-disabled', String(next.disabled));
+    live.textContent = `Slide ${current + 1} of ${figures.length}`;
   }
 
   prev.onclick = function () {
@@ -98,6 +106,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
   slider.appendChild(prev);
   slider.appendChild(next);
+
+  // Live region for screen readers
+  const live = document.createElement('div');
+  live.setAttribute('aria-live', 'polite');
+  live.style.position = 'absolute';
+  live.style.width = '1px';
+  live.style.height = '1px';
+  live.style.overflow = 'hidden';
+  live.style.clip = 'rect(1px,1px,1px,1px)';
+  live.style.clipPath = 'inset(50%)';
+  live.style.whiteSpace = 'nowrap';
+  slider.appendChild(live);
 
   // Replace gallery with slider
   gallery.parentNode.replaceChild(slider, gallery);
@@ -158,4 +178,12 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize and first position update
   initDimensions();
   update();
+
+  // Keyboard controls
+  slider.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { prev.click(); e.preventDefault(); }
+    else if (e.key === 'ArrowRight') { next.click(); e.preventDefault(); }
+    else if (e.key === 'Home') { current = 0; update(); e.preventDefault(); }
+    else if (e.key === 'End') { current = figures.length - 1; update(); e.preventDefault(); }
+  });
 });
