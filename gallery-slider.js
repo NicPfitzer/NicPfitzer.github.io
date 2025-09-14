@@ -141,7 +141,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function setDimensions() {
     if (!firstImg || !firstFigure) return;
-    const w = slider.clientWidth || firstImg.clientWidth || 1;
+    // Use the actual slide width (figure clientWidth) for aspect math
+    const w = firstFigure.clientWidth || slider.clientWidth || firstImg.clientWidth || 1;
     // Fallback aspect in case natural sizes are not ready
     const aspect = (firstImg.naturalWidth && firstImg.naturalHeight)
       ? (firstImg.naturalHeight / firstImg.naturalWidth)
