@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
   slider.style.position = 'relative';
   slider.style.overflow = 'hidden';
   slider.style.width = '100%';
-  slider.style.height = '220px';
+  // Height will be set dynamically based on first image aspect ratio
+  slider.style.height = 'auto';
 
   // Create track
   const track = document.createElement('div');
@@ -26,8 +27,16 @@ document.addEventListener('DOMContentLoaded', function () {
   figures.forEach(fig => {
     fig.style.flex = '0 0 80%'; // Show partial next/prev
     fig.style.margin = '0 16px'; // Buffer on edges
-    fig.querySelector('img').style.objectFit = 'contain'; // Prevent cropping
-    fig.querySelector('img').style.background = '#222';
+    const img = fig.querySelector('img');
+    if (!img) return;
+    img.style.objectFit = 'contain'; // Prevent cropping
+    img.style.background = '#222';
+    img.style.width = '100%';
+    img.style.height = 'auto';
+    // Ensure lazy loading for non-first images
+    if (img.loading === undefined || img.loading === '') img.loading = 'lazy';
+    // Hint browsers to decode off-main-thread
+    try { img.decoding = 'async'; } catch (e) {}
     track.appendChild(fig);
   });
 
@@ -92,5 +101,61 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Replace gallery with slider
   gallery.parentNode.replaceChild(slider, gallery);
+
+  // Compute and lock slider height to first image's aspect ratio
+  const firstImg = figures[0]?.querySelector('img');
+  const firstFigure = figures[0];
+
+  function setDimensions() {
+    if (!firstImg || !firstFigure) return;
+    const w = slider.clientWidth || firstImg.clientWidth || 1;
+    // Fallback aspect in case natural sizes are not ready
+    const aspect = (firstImg.naturalWidth && firstImg.naturalHeight)
+      ? (firstImg.naturalHeight / firstImg.naturalWidth)
+      : (9 / 16);
+
+    // Height for the image area (content box), rounding to whole px
+    const imgContentHeight = Math.max(1, Math.round(w * aspect));
+
+    // Apply the height to all images so figures compute correct total height
+    figures.forEach(fig => {
+      const img = fig.querySelector('img');
+      if (!img) return;
+      img.style.height = imgContentHeight + 'px';
+    });
+
+    // After layout, measure the first figure's full height (image + padding + caption + borders)
+    requestAnimationFrame(() => {
+      const total = firstFigure.offsetHeight;
+      if (total > 0) {
+        slider.style.height = total + 'px';
+      }
+    });
+  }
+
+  function readyToMeasure() {
+    return firstImg && (firstImg.complete && firstImg.naturalWidth > 0);
+  }
+
+  function initDimensions() {
+    if (readyToMeasure()) {
+      setDimensions();
+    } else if (firstImg) {
+      firstImg.addEventListener('load', setDimensions, { once: true });
+      firstImg.addEventListener('error', setDimensions, { once: true });
+      // In case the browser sets complete=true late
+      setTimeout(setDimensions, 200);
+    }
+  }
+
+  // Recompute on resize
+  let resizeTO;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTO);
+    resizeTO = setTimeout(setDimensions, 100);
+  });
+
+  // Initialize and first position update
+  initDimensions();
   update();
 });
