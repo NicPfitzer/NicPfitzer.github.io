@@ -3,31 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name – CV</title>
-  <meta name="description" content="CV and portfolio of Your Name." />
+  <title>Nicolas Pfitzer – CV</title>
+  <meta name="description" content="CV and portfolio of Nicolas Pfitzer (Robotics & ML)." />
   <link rel="icon" href="data:," />
   <style>
     :root{
-      --bg:#0f172a; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --acc:#38bdf8;
-      --border:#1f2937;
+      --bg:#0f172a; --card:#0b1220; --text:#e5e7eb; --muted:#94a3b8; --acc:#38bdf8; --border:#1e293b;
     }
     *{box-sizing:border-box}
-    body{margin:0;font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial; background:var(--bg); color:var(--text)}
-    .wrap{max-width:980px;margin:auto;padding:28px}
+    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;background:var(--bg);color:var(--text)}
+    a{color:var(--acc)}
+    .wrap{max-width:1050px;margin:auto;padding:28px}
     header{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:28px}
     .id{display:flex;gap:16px;align-items:center}
-    .avatar{width:72px;height:72px;border-radius:50%;background:#222;border:1px solid var(--border);object-fit:cover}
-    h1{margin:0;font-size:1.75rem;line-height:1.2}
+    h1{margin:0;font-size:1.9rem;line-height:1.2}
     .sub{color:var(--muted)}
     nav a{color:var(--text);text-decoration:none;padding:8px 12px;border:1px solid var(--border);border-radius:999px}
     nav a:hover{border-color:var(--acc)}
     .grid{display:grid;grid-template-columns:1fr;gap:16px}
     @media(min-width:900px){.grid{grid-template-columns:2fr 1fr}}
     section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px}
-    h2{margin:0 0 12px 0;font-size:1.1rem;letter-spacing:.2px}
+    h2{margin:0 0 12px 0;font-size:1.15rem;letter-spacing:.2px}
     .item{margin-bottom:14px}
     .item:last-child{margin-bottom:0}
-    .row{display:flex;justify-content:space-between;gap:12px}
+    .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     .role{font-weight:600}
     .meta{color:var(--muted)}
     ul{margin:8px 0 0 18px}
@@ -35,102 +34,217 @@
     .cta{display:inline-block;margin-top:12px;padding:10px 14px;background:transparent;border:1px solid var(--acc);color:var(--text);border-radius:10px;text-decoration:none}
     .cta:hover{background:rgba(56,189,248,.08)}
     footer{color:var(--muted);text-align:center;margin:28px 0 8px}
-    a{color:var(--acc)}
+    .badge{font-size:.85rem;color:var(--muted)}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="id">
-        <img class="avatar" src="avatar.jpg" alt="Your portrait" />
+        <!-- Optional avatar: add avatar.jpg in repo root and uncomment next line -->
+        <!-- <img class="avatar" src="avatar.jpg" alt="Portrait of Nicolas Pfitzer" /> -->
         <div>
-          <h1>Your Name</h1>
-          <div class="sub">Job Title • City, Country</div>
-          <div class="sub"><a href="mailto:you@example.com">you@example.com</a> • <a href="https://linkedin.com/in/your">LinkedIn</a> • <a href="https://github.com/your">GitHub</a></div>
+          <h1>Nicolas Pfitzer</h1>
+          <div class="sub">Robotics and ML Engineer • Cambridge, United Kingdom</div>
+          <div class="sub">
+            <a href="mailto:nicolas@pfitzer.org">nicolas@pfitzer.org</a>
+            • <a href="https://linkedin.com/in/nicolas-pfitzer">LinkedIn</a>
+            • <a href="https://github.com/NicPfitzer">GitHub</a>
+          </div>
+          <div class="badge">Swiss & US citizen • Last updated: September 2025</div>
         </div>
       </div>
       <nav>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
-        <a href="cv.pdf" download>Download CV</a>
+        <a href="#education">Education</a>
+        <a href="#publications">Publications</a>
+        <a href="Simple_CV-3.pdf" download>Download CV (PDF)</a>
       </nav>
     </header>
 
     <div class="grid">
       <main class="col">
         <section id="about">
-          <h2>About</h2>
-          <p>1–3 sentences about your background, focus areas, and what you’re looking for.</p>
+          <h2>Profile</h2>
+          <p>Robotics and ML engineer focused on reinforcement learning, computer vision, and embedded systems. Passionate about autonomous decision-making and embodied intelligence, connecting perception, reasoning, and control to build real-world systems.</p>
         </section>
 
         <section id="experience">
           <h2>Experience</h2>
           <div class="item">
             <div class="row">
-              <div class="role">Senior Thing, Company</div>
-              <div class="meta">2022–Present • City</div>
+              <div class="role">Student Researcher, ProrokLab – University of Cambridge</div>
+              <div class="meta">Feb 2025 – Sept 2025 • Cambridge, UK</div>
             </div>
             <ul>
-              <li>Impact bullet with measurable outcome (e.g., “Increased X by 27%”).</li>
-              <li>Tooling/tech stack bullet.</li>
-              <li>Leadership/collaboration bullet.</li>
+              <li>Multi-agent reinforcement learning for collaborative, language-driven robot teams.</li>
             </ul>
           </div>
           <div class="item">
             <div class="row">
-              <div class="role">Prior Role, Org</div>
-              <div class="meta">2019–2022 • City</div>
+              <div class="role">Student Researcher, Robotic Systems Lab – ETH Zurich</div>
+              <div class="meta">Sept 2024 – Jan 2025 • Zurich, CH</div>
             </div>
             <ul>
-              <li>Key responsibility or achievement.</li>
-              <li>Another achievement.</li>
+              <li>Multi-task RL for material handling (with Liebherr): navigation, waypoint tracking, and dynamic throwing under a single policy.</li>
+            </ul>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="role">Computer Vision Engineer Intern, Shape Labs Inc.</div>
+              <div class="meta">Feb 2024 – Aug 2024 • San Francisco, USA</div>
+            </div>
+            <ul>
+              <li>Built CV/ML pipelines including posture analysis from whole‑body 3D scans.</li>
+              <li>Developed a C++ pipeline to rig and animate textured 3D meshes; iOS demo for real‑time animation.</li>
+              <li>Trained a ResNet50 clothing‑detection model on 60k+ images, achieving 98.5% accuracy.</li>
+            </ul>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="role">Power System Engineer, EPFL Spacecraft Team</div>
+              <div class="meta">Aug 2021 – Jul 2022 • Lausanne, CH</div>
+            </div>
+            <ul>
+              <li>Orbital simulations; designed and optimized solar‑panel deployment for CubeSats.</li>
             </ul>
           </div>
         </section>
 
         <section id="projects">
-          <h2>Projects</h2>
+          <h2>Selected Projects</h2>
           <div class="item">
-            <div class="row">
-              <div class="role"><a href="https://github.com/your/project">Project Name</a></div>
-              <div class="meta">Tech • Year</div>
-            </div>
-            <p>One-line description focusing on problem, approach, and result.</p>
+            <div class="row"><div class="role">Multi‑robot Coordination and Reasoning via Natural Language</div><div class="meta">Feb 2025 – Present • ProrokLab (MSc Thesis)</div></div>
+            <ul>
+              <li>Combines LLMs, RNNs, and automata theory to interpret and execute natural‑language tasking for teams of robots.</li>
+              <li>Submitted to ICRA 2026.</li>
+            </ul>
           </div>
+          <div class="item">
+            <div class="row"><div class="role">MR.NAVI: Mixed‑Reality Navigation Assistant for the Visually Impaired</div><div class="meta">Sept 2024 – Jan 2025 • ETH Zurich</div></div>
+            <ul>
+              <li>Mixed‑reality app to assist navigation in unfamiliar environments; accepted to CV4MR Workshop at CVPR 2025.</li>
+            </ul>
+          </div>
+          <div class="item">
+            <div class="row"><div class="role">Multi‑task RL for Material Handling (Liebherr LH 40)</div><div class="meta">Sept 2024 – Jan 2025 • RSL, ETH Zurich</div></div>
+            <ul>
+              <li>Single policy trained for navigation, waypoint tracking, and dynamic throwing in simulation.</li>
+            </ul>
+          </div>
+          <div class="item">
+            <div class="row"><div class="role">Dexterous Low‑Cost Tendon‑Driven Robotic Hand</div><div class="meta">Sept 2023 – Dec 2023 • ETH Zurich</div></div>
+            <ul>
+              <li>11 DoF tendon‑driven hand with snap‑fit pin joints; teleoperation, optimization‑based hand tracking, and RL for ball‑rolling tasks.</li>
+            </ul>
+          </div>
+          <div class="item">
+            <div class="row"><div class="role">B‑RRT* for Path Planning in Obstructed Environments</div><div class="meta">Sept 2023 – Dec 2023 • ETH Zurich</div></div>
+            <ul>
+              <li>High‑performance simulation for obstacle navigation using a two‑wheeled robot; optimal paths with bidirectional RRT*.</li>
+            </ul>
+          </div>
+          <div class="item">
+            <div class="row"><div class="role">High‑Efficiency Mechanical Clock with Flexible Mechanics</div><div class="meta">Feb 2022 – Jul 2022 • EPFL</div></div>
+            <ul>
+              <li>Clock with flexible‑guidance oscillator yielding theoretical 50% energy‑efficiency gain; titanium body and tungsten counterweights.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="publications">
+          <h2>Publications</h2>
+          <ul>
+            <li>Pfitzer, N., et al. <em>Prompting Robot Teams with Natural Language and Automata</em>. Submitted to ICRA 2026.</li>
+            <li><em>MR.NAVI: Mixed‑Reality Navigation Assistant for the Visually Impaired</em>. Accepted at CV4MR Workshop, CVPR 2025.</li>
+          </ul>
         </section>
       </main>
 
       <aside class="col">
         <section id="skills">
-          <h2>Skills</h2>
-          <div>
-            <span class="tag">Python</span>
-            <span class="tag">R</span>
-            <span class="tag">ML</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Git</span>
+          <h2>Technical Skills</h2>
+          <div class="item">
+            <div class="role">Programming</div>
+            <div>
+              <span class="tag">C++</span>
+              <span class="tag">Python</span>
+              <span class="tag">MATLAB</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="role">Machine Learning</div>
+            <div>
+              <span class="tag">PyTorch</span>
+              <span class="tag">TensorFlow</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="role">Reinforcement Learning</div>
+            <div>
+              <span class="tag">IsaacLab</span>
+              <span class="tag">TorchRL</span>
+              <span class="tag">VMAS</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="role">Robotics, CAD & Electronics</div>
+            <div>
+              <span class="tag">ROS2</span>
+              <span class="tag">Catia</span>
+              <span class="tag">Cadence</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="role">Tools</div>
+            <div>
+              <span class="tag">Git</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Linux</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="role">Languages</div>
+            <div>
+              <span class="tag">French (fluent)</span>
+              <span class="tag">English (fluent)</span>
+              <span class="tag">German (intermediate)</span>
+            </div>
           </div>
         </section>
 
-        <section>
+        <section id="education">
           <h2>Education</h2>
           <div class="item">
-            <div class="role">MSc, Field</div>
-            <div class="meta">University • Year</div>
+            <div class="role">MSc Robotics, Systems and Control – ETH Zurich</div>
+            <div class="meta">2023 – Present • Zurich, Switzerland</div>
+          </div>
+          <div class="item">
+            <div class="role">Master Thesis – University of Cambridge</div>
+            <div class="meta">Jan 2025 – Present • Cambridge, United Kingdom</div>
+          </div>
+          <div class="item">
+            <div class="role">BSc Microengineering – EPFL / University of New South Wales</div>
+            <div class="meta">2020 – 2023 • Lausanne, CH / Sydney, AU • Grade 5.42/6 (Top 5%)</div>
+          </div>
+          <div class="item">
+            <div class="role">Swiss Matura (French‑German Bilingual) – École Moser</div>
+            <div class="meta">2017 – 2020 • Geneva, Switzerland • Honours, 5.7/6 (Top 5%)</div>
           </div>
         </section>
 
         <section>
           <h2>Contact</h2>
-          <p>Open to roles in X. Best way to reach me is email or LinkedIn.</p>
-          <a class="cta" href="mailto:you@example.com">Email me</a>
+          <p>Open to opportunities in robotics, reinforcement learning, and computer vision. Best way to reach me is email or LinkedIn.</p>
+          <a class="cta" href="mailto:nicolas@pfitzer.org">Email me</a>
         </section>
       </aside>
     </div>
 
     <footer>
-      © <span id="y"></span> Your Name
+      © <span id="y"></span> Nicolas Pfitzer
     </footer>
   </div>
   <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
