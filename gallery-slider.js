@@ -80,8 +80,21 @@ document.addEventListener('DOMContentLoaded', function () {
   next.style.borderRadius = '50%';
   next.style.width = next.style.height = '40px';
 
+  let slideSpan = 0; // width including margins
+
+  function computeSlideSpan() {
+    const first = figures[0];
+    if (!first) { slideSpan = 0; return; }
+    const rect = first.getBoundingClientRect();
+    const cs = window.getComputedStyle(first);
+    const ml = parseFloat(cs.marginLeft) || 0;
+    const mr = parseFloat(cs.marginRight) || 0;
+    slideSpan = rect.width + ml + mr;
+  }
+
   function update() {
-    track.style.transform = `translateX(-${current * 80}%)`;
+    // translate by exact pixel span to avoid misalignment on mobile
+    track.style.transform = `translateX(-${current * slideSpan}px)`;
     prev.disabled = current === 0;
     next.disabled = current === figures.length - 1;
     prev.style.opacity = prev.disabled ? '0.3' : '1';
@@ -144,12 +157,14 @@ document.addEventListener('DOMContentLoaded', function () {
       img.style.height = imgContentHeight + 'px';
     });
 
-    // After layout, measure the first figure's full height (image + padding + caption + borders)
+    // After layout, measure the maximum figure height (image + caption)
     requestAnimationFrame(() => {
-      const total = firstFigure.offsetHeight;
-      if (total > 0) {
-        slider.style.height = total + 'px';
-      }
+      let maxH = 0;
+      figures.forEach(f => { maxH = Math.max(maxH, f.offsetHeight); });
+      if (maxH > 0) slider.style.height = maxH + 'px';
+      // Recompute slide span since widths can change on resize
+      computeSlideSpan();
+      update();
     });
   }
 
@@ -176,6 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Initialize and first position update
+  computeSlideSpan();
   initDimensions();
   update();
 
