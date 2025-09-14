@@ -35,14 +35,18 @@
     .cta:hover{background:rgba(56,189,248,.08)}
     footer{color:var(--muted);text-align:center;margin:28px 0 8px}
     .badge{font-size:.85rem;color:var(--muted)}
+    .avatar{width:72px;height:72px;border-radius:50%;background:#222;border:1px solid var(--border);object-fit:cover}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    figure{margin:0;background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+    figure img{width:100%;height:180px;object-fit:cover;display:block}
+    figcaption{padding:10px;color:var(--muted);font-size:.95rem;border-top:1px solid var(--border)}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="id">
-        <!-- Optional avatar: add avatar.jpg in repo root and uncomment next line -->
-        <!-- <img class="avatar" src="avatar.jpg" alt="Portrait of Nicolas Pfitzer" /> -->
+        <img class="avatar" src="images/avatar.jpg" alt="Portrait of Nicolas Pfitzer" width="72" height="72" />
         <div>
           <h1>Nicolas Pfitzer</h1>
           <div class="sub">Robotics and ML Engineer • Cambridge, United Kingdom</div>
@@ -151,6 +155,28 @@
             <ul>
               <li>Clock with flexible‑guidance oscillator yielding theoretical 50% energy‑efficiency gain; titanium body and tungsten counterweights.</li>
             </ul>
+          </div>
+        </section>
+
+        <section id="gallery">
+          <h2>Gallery</h2>
+          <div class="gallery">
+            <figure>
+              <img loading="lazy" src="images/mrnavi.jpg" alt="MR.NAVI mixed-reality navigation assistant screenshot" />
+              <figcaption>MR.NAVI – Mixed‑Reality Navigation Assistant (CVPR 2025 Workshop)</figcaption>
+            </figure>
+            <figure>
+              <img loading="lazy" src="images/material-handling.jpg" alt="Simulation of multi‑task RL for material handling with excavator" />
+              <figcaption>Multi‑task RL for material handling (navigation, tracking, throwing)</figcaption>
+            </figure>
+            <figure>
+              <img loading="lazy" src="images/robot-hand.jpg" alt="Tendon‑driven robotic hand prototype" />
+              <figcaption>11 DoF tendon‑driven robotic hand – prototyping & RL control</figcaption>
+            </figure>
+            <figure>
+              <img loading="lazy" src="images/brrtstar.jpg" alt="Path planning visualization with bidirectional RRT*" />
+              <figcaption>Path planning with Bi‑RRT* in obstructed environments</figcaption>
+            </figure>
           </div>
         </section>
 
