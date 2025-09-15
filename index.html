@@ -49,6 +49,14 @@
     footer{color:var(--muted);text-align:center;margin:28px 0 8px}
     .badge{font-size:.85rem;color:var(--muted)}
     .avatar{width:72px;height:72px;border-radius:50%;background:#222;border:1px solid var(--border);object-fit:cover}
+    /* Education logos */
+    .edu{display:flex; align-items:flex-start; gap:12px}
+    .edu-logo{width:36px; height:36px; flex:0 0 36px; border:1px solid var(--border); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.8rem; color:var(--muted); background:rgba(148,163,184,.08); overflow:hidden}
+    .edu-logo img{width:100%; height:100%; object-fit:contain; display:block}
+    .edu-logo.round{border-radius:50%}
+    .edu-body{min-width:0}
+    .edu-logos{display:flex; gap:6px; align-items:center}
+    .edu-logos .edu-logo{width:36px; height:36px}
   .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
   .skip-link:focus{left:12px;top:12px;width:auto;height:auto;padding:8px 12px;background:var(--card);border:1px solid var(--acc);border-radius:8px;z-index:999}
   .gallery-slider { position: relative; width: 100%; max-width: 700px; margin: 0 auto 12px auto; }
@@ -232,20 +240,43 @@
         <section id="education">
           <h2>Education</h2>
           <div class="item">
-            <div class="role">MSc Robotics, Systems and Control – ETH Zurich</div>
-            <div class="meta">2023 – Present • Zurich, Switzerland</div>
+            <div class="edu">
+              <div class="edu-logo"><img src="images/ethz.png" alt="ETH Zurich logo" width="36" height="36"></div>
+              <div class="edu-body">
+                <div class="role">MSc Robotics, Systems and Control – ETH Zurich</div>
+                <div class="meta">2023 – Present • Zurich, Switzerland</div>
+              </div>
+            </div>
           </div>
           <div class="item">
-            <div class="role">Master Thesis – University of Cambridge</div>
-            <div class="meta">Jan 2025 – Present • Cambridge, United Kingdom</div>
+            <div class="edu">
+              <div class="edu-logo"><img src="images/cambridge.png" alt="University of Cambridge logo" width="36" height="36"></div>
+              <div class="edu-body">
+                <div class="role">Master Thesis – University of Cambridge</div>
+                <div class="meta">Jan 2025 – Present • Cambridge, United Kingdom</div>
+              </div>
+            </div>
           </div>
           <div class="item">
-            <div class="role">BSc Microengineering – EPFL / University of New South Wales</div>
-            <div class="meta">2020 – 2023 • Lausanne, CH / Sydney, AU • Grade 5.42/6 (Top 5%)</div>
+            <div class="edu">
+              <div class="edu-logos">
+                <div class="edu-logo"><img src="images/epfl.png" alt="EPFL logo" width="36" height="36"></div>
+                <div class="edu-logo"><img src="images/unsw.png" alt="UNSW logo" width="36" height="36"></div>
+              </div>
+              <div class="edu-body">
+                <div class="role">BSc Microengineering – EPFL / University of New South Wales</div>
+                <div class="meta">2020 – 2023 • Lausanne, CH / Sydney, AU • Grade 5.42/6 (Top 5%)</div>
+              </div>
+            </div>
           </div>
           <div class="item">
-            <div class="role">Swiss Matura (French‑German Bilingual) – École Moser</div>
-            <div class="meta">2017 – 2020 • Geneva, Switzerland • Honours, 5.7/6 (Top 5%)</div>
+            <div class="edu">
+              <div class="edu-logo round">EM</div>
+              <div class="edu-body">
+                <div class="role">Swiss Matura (French‑German Bilingual) – École Moser</div>
+                <div class="meta">2017 – 2020 • Geneva, Switzerland • Honours, 5.7/6 (Top 5%)</div>
+              </div>
+            </div>
           </div>
         </section>
 
