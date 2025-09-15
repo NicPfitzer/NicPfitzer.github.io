@@ -20,6 +20,7 @@
     .gallery-slider { position: relative; width: 100%; max-width: 900px; margin: 0 auto 12px auto; }
     .gallery-track { display: flex; transition: transform 0.5s cubic-bezier(.7,0,.3,1); height: 100%; }
     .gallery-slider figure { margin: 0 16px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; flex: 0 0 80%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .gallery-slider figure a{display:flex;flex-direction:column;align-items:center;color:inherit;text-decoration:none;width:100%;height:100%}
     .gallery-slider img { width: 100%; height: auto; max-height: 100%; object-fit: contain; background: #222; display: block; padding: 8px 0; }
     .gallery-slider figcaption { padding: 10px; color: var(--muted); font-size: .95rem; border-top: 1px solid var(--border); text-align: center; }
     .gallery-slider figcaption .desc { display:block; font-size:.9rem; opacity:.9; margin-top:4px; }
@@ -42,14 +43,16 @@
     </header>
     <main class="card">
       <h1>Computer Vision Projects</h1>
-      <div class="muted">Perception, MR/AR, and CV pipelines.</div>
+      <div class="muted">Perception, MR/AR, and CV pipelines. Click on a project to find out more.</div>
       <div class="gallery" aria-label="Computer vision projects gallery">
         <figure>
-          <img loading="eager" fetchpriority="high" src="images/mrnavi.jpg" alt="MR.NAVI mixed-reality navigation assistant" />
-          <figcaption>
-            MR.NAVI – Mixed‑Reality Navigation Assistant · <a href="video.html">View demo video</a>
-            <span class="desc">Mixed‑reality app to assist navigation in unfamiliar environments; accepted to CV4MR Workshop at CVPR 2025.</span>
-          </figcaption>
+          <a href="project-mrnavi.html">
+            <img loading="eager" fetchpriority="high" src="images/mrnavi.jpg" alt="MR.NAVI mixed-reality navigation assistant" />
+            <figcaption>
+              MR.NAVI – Mixed‑Reality Navigation Assistant · <a href="video.html">View demo video</a>
+              <span class="desc">Mixed‑reality app to assist navigation in unfamiliar environments; accepted to CV4MR Workshop at CVPR 2025.</span>
+            </figcaption>
+          </a>
         </figure>
       </div>
     </main>
