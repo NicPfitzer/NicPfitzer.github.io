@@ -17,6 +17,8 @@
     .card{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px }
     h1{ margin:0 0 8px 0; font-size:1.6rem }
     .muted{ color:var(--muted) }
+    .cta{ display:inline-block; padding:8px 12px; background:transparent; border:1px solid var(--acc); color:var(--text); border-radius:10px; text-decoration:none }
+    .cta:hover{ background:rgba(56,189,248,.08) }
     .hero{ border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#111; }
     .hero img{ width:100%; height:auto; display:block }
   </style>
@@ -25,6 +27,7 @@
   <div class="wrap">
     <header style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <a href="projects-robotics.html">← Back to Robotics</a>
+      <button id="theme-toggle" class="cta" type="button" aria-pressed="false" aria-label="Toggle color theme">Toggle theme</button>
     </header>
     <main class="card">
       <h1>Multi‑task RL for Material Handling (Liebherr)</h1>
@@ -35,6 +38,24 @@
       <p>Single policy trained for navigation, waypoint tracking, and dynamic throwing in simulation, targeting the Liebherr LH 40 platform.</p>
     </main>
   </div>
+  <script>
+    (function(){
+      const root = document.documentElement;
+      const btn = document.getElementById('theme-toggle');
+      const stored = localStorage.getItem('theme');
+      if (stored === 'light') root.setAttribute('data-theme','light');
+      const isLight = () => root.getAttribute('data-theme') === 'light';
+      const apply = (light) => {
+        if (light) { root.setAttribute('data-theme','light'); btn && btn.setAttribute('aria-pressed','true'); }
+        else { root.removeAttribute('data-theme'); btn && btn.setAttribute('aria-pressed','false'); }
+      };
+      btn && btn.addEventListener('click', () => {
+        const next = !isLight();
+        apply(next);
+        localStorage.setItem('theme', next ? 'light' : 'dark');
+      });
+      btn && btn.setAttribute('aria-pressed', String(isLight()));
+    })();
+  </script>
 </body>
 </html>
-

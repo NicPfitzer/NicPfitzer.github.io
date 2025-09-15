@@ -28,6 +28,7 @@
   <div class="wrap">
     <header style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <a href="projects-computer-vision.html">← Back to Computer Vision</a>
+      <button id="theme-toggle" class="cta" type="button" aria-pressed="false" aria-label="Toggle color theme">Toggle theme</button>
     </header>
     <main class="card">
       <h1>MR.NAVI – Mixed‑Reality Navigation Assistant</h1>
@@ -41,6 +42,24 @@
       </div>
     </main>
   </div>
+  <script>
+    (function(){
+      const root = document.documentElement;
+      const btn = document.getElementById('theme-toggle');
+      const stored = localStorage.getItem('theme');
+      if (stored === 'light') root.setAttribute('data-theme','light');
+      const isLight = () => root.getAttribute('data-theme') === 'light';
+      const apply = (light) => {
+        if (light) { root.setAttribute('data-theme','light'); btn && btn.setAttribute('aria-pressed','true'); }
+        else { root.removeAttribute('data-theme'); btn && btn.setAttribute('aria-pressed','false'); }
+      };
+      btn && btn.addEventListener('click', () => {
+        const next = !isLight();
+        apply(next);
+        localStorage.setItem('theme', next ? 'light' : 'dark');
+      });
+      btn && btn.setAttribute('aria-pressed', String(isLight()));
+    })();
+  </script>
 </body>
 </html>
-
