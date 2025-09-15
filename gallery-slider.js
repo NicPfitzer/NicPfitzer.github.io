@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
   next.style.width = next.style.height = '40px';
 
   let slideSpan = 0; // width including margins
+  let ro = null; // ResizeObserver for dynamic height
 
   function computeSlideSpan() {
     const first = figures[0];
@@ -90,6 +91,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const ml = parseFloat(cs.marginLeft) || 0;
     const mr = parseFloat(cs.marginRight) || 0;
     slideSpan = rect.width + ml + mr;
+  }
+
+  function setHeightToCurrent() {
+    const fig = figures[current];
+    if (!fig) return;
+    const h = fig.offsetHeight;
+    if (h > 0) slider.style.height = h + 'px';
+  }
+
+  function observeCurrentFigure() {
+    if (!('ResizeObserver' in window)) return;
+    if (!ro) ro = new ResizeObserver(() => setHeightToCurrent());
+    ro.disconnect();
+    const fig = figures[current];
+    if (fig) ro.observe(fig);
   }
 
   function update() {
@@ -102,6 +118,9 @@ document.addEventListener('DOMContentLoaded', function () {
     prev.setAttribute('aria-disabled', String(prev.disabled));
     next.setAttribute('aria-disabled', String(next.disabled));
     live.textContent = `Slide ${current + 1} of ${figures.length}`;
+    // Adjust height to current figure and observe for changes
+    observeCurrentFigure();
+    requestAnimationFrame(setHeightToCurrent);
   }
 
   prev.onclick = function () {
@@ -158,13 +177,10 @@ document.addEventListener('DOMContentLoaded', function () {
       img.style.height = imgContentHeight + 'px';
     });
 
-    // After layout, measure the maximum figure height (image + caption)
+    // After layout, recompute span and set height to current figure
     requestAnimationFrame(() => {
-      let maxH = 0;
-      figures.forEach(f => { maxH = Math.max(maxH, f.offsetHeight); });
-      if (maxH > 0) slider.style.height = maxH + 'px';
-      // Recompute slide span since widths can change on resize
       computeSlideSpan();
+      setHeightToCurrent();
       update();
     });
   }
