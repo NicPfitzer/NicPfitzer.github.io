@@ -30,9 +30,12 @@
     header{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:28px}
     /* Hero header with background image */
     header.hero{position:relative;padding:20px;border:1px solid var(--border);border-radius:16px;overflow:hidden;
-      background-image:linear-gradient(90deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.55) 45%, rgba(15,23,42,0.85) 100%), url('images/header/header.jpg');
-      background-size:cover;background-position:center}
-    header.hero nav a{background:rgba(0,0,0,.18)}
+      background-image:linear-gradient(90deg, rgba(15,23,42,0.75) 0%, rgba(15,23,42,0.45) 45%, rgba(15,23,42,0.75) 100%), url('images/header/header.jpg');
+      background-size:cover;background-position:center;color:#ffffff}
+    header.hero h1{color:#ffffff;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+    header.hero .sub, header.hero .badge{color:#f1f5f9;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+    header.hero a{color:#ffffff}
+    header.hero nav a{background:rgba(0,0,0,.24); color:#ffffff}
     @media (max-width:600px){
       header.hero{padding:14px; display:block}
       header.hero .id{margin-bottom:8px}
@@ -294,7 +297,7 @@
                 <div class="role">Swiss Matura (French‑German Bilingual) – École Moser</div>
                 <div class="meta">2017 – 2020 • Geneva, Switzerland • Honours, 5.7/6 (Top 5%)</div>
                 <div>
-                  <a class="tag" href="transcripts/moser.pdf" download>Matura Transcript</a>
+                  <a class="tag" href="transcripts/matu.pdf" download>Matura Transcript</a>
                 </div>
               </div>
             </div>
