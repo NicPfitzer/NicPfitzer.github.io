@@ -28,6 +28,18 @@
     a{color:var(--acc)}
     .wrap{max-width:1050px;margin:auto;padding:28px}
     header{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:28px}
+    /* Hero header with background image */
+    header.hero{position:relative;padding:20px;border:1px solid var(--border);border-radius:16px;overflow:hidden;
+      background-image:linear-gradient(90deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.55) 45%, rgba(15,23,42,0.85) 100%), url('images/header/header.jpg');
+      background-size:cover;background-position:center}
+    header.hero nav a{background:rgba(0,0,0,.18)}
+    @media (max-width:600px){
+      header.hero{padding:14px; display:block}
+      header.hero .id{margin-bottom:8px}
+      header.hero nav{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px}
+      header.hero nav a{margin-top:0; padding:6px 10px}
+      header.hero #theme-toggle{margin-top:10px}
+    }
     .id{display:flex;gap:16px;align-items:center}
     h1{margin:0;font-size:1.9rem;line-height:1.2}
     .sub{color:var(--muted)}
@@ -92,7 +104,7 @@
 <body>
   <a href="#about" class="skip-link">Skip to content</a>
   <div class="wrap">
-    <header>
+    <header class="hero">
       <div class="id">
         <img class="avatar" src="images/avatar.jpg" alt="Portrait of Nicolas Pfitzer" width="72" height="72" />
         <div>
