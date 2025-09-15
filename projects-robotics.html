@@ -22,6 +22,7 @@
     .gallery-slider figure { margin: 0 16px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; flex: 0 0 80%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     .gallery-slider img { width: 100%; height: auto; max-height: 100%; object-fit: contain; background: #222; display: block; padding: 8px 0; }
     .gallery-slider figcaption { padding: 10px; color: var(--muted); font-size: .95rem; border-top: 1px solid var(--border); text-align: center; }
+    .gallery-slider figcaption .desc { display:block; font-size:.9rem; opacity:.9; margin-top:4px; }
     .gallery-prev, .gallery-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(15,23,42,0.7); color: #e5e7eb; border: none; font-size: 2rem; cursor: pointer; z-index: 2; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; transition: opacity 0.2s; }
     .gallery-prev { left: 0; }
     .gallery-next { right: 0; }
@@ -45,23 +46,38 @@
       <div class="gallery" aria-label="Robotics projects gallery">
         <figure>
           <img loading="eager" fetchpriority="high" src="images/cartell.png" alt="Automata-based reasoning and collaboration for robot teams" />
-          <figcaption>Automata-based reasoning and collaboration for robot teams</figcaption>
+          <figcaption>
+            Automata‑based reasoning and collaboration for robot teams
+            <span class="desc">LLM‑guided tasking with RNN/automata execution for coordinated multi‑robot behaviors.</span>
+          </figcaption>
         </figure>
         <figure>
           <img loading="lazy" src="images/exploration.jpg" alt="Language‑driven multi‑agent exploration and search demo" />
-          <figcaption>Language‑Driven Multi‑Agent Exploration and Search</figcaption>
+          <figcaption>
+            Language‑Driven Multi‑Agent Exploration and Search
+            <span class="desc">Framework for team‑level natural‑language commands, task‑conditioned rewards, onboard perception, and a cooperative memory map.</span>
+          </figcaption>
         </figure>
         <figure>
           <img loading="lazy" src="images/material-handling.jpg" alt="Simulation of multi‑task RL for material handling with excavator" />
-          <figcaption>Multi‑task RL for material handling</figcaption>
+          <figcaption>
+            Multi‑task RL for material handling
+            <span class="desc">Single policy for navigation, waypoint tracking, and dynamic throwing on a simulated Liebherr platform.</span>
+          </figcaption>
         </figure>
         <figure>
           <img loading="lazy" src="images/robot-hand.jpg" alt="Tendon‑driven robotic hand prototype" />
-          <figcaption>Dexterous tendon‑driven robotic hand</figcaption>
+          <figcaption>
+            Dexterous tendon‑driven robotic hand
+            <span class="desc">11‑DoF tendon hand with snap‑fit joints; teleop, optimization‑based tracking, and RL for ball‑rolling tasks.</span>
+          </figcaption>
         </figure>
         <figure>
           <img loading="lazy" src="images/brrtstar.jpg" alt="Path planning visualization with bidirectional RRT*" />
-          <figcaption>Path planning with Bi‑RRT*</figcaption>
+          <figcaption>
+            Path planning with Bi‑RRT*
+            <span class="desc">High‑performance simulation for obstacle navigation using bidirectional RRT*.</span>
+          </figcaption>
         </figure>
       </div>
     </main>
@@ -69,4 +85,3 @@
   <script src="gallery-slider.js"></script>
 </body>
 </html>
-
