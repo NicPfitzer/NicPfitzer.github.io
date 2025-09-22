@@ -28,6 +28,9 @@
     ul{ padding-left:20px; margin:0 0 20px 0 }
     .gallery-row{ display:grid; gap:12px; margin:0 0 18px 0; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
     .gallery-row img{ width:100%; height:auto; border-radius:12px; border:1px solid var(--border); background:#0b1220; object-fit:cover }
+    .media{ margin:0 0 18px 0 }
+    .media video{ width:100%; border-radius:12px; border:1px solid var(--border); background:#000; display:block }
+    .media figcaption{ font-size:.85rem; color:var(--muted); margin-top:8px }
     .caption{ font-size:.85rem; color:var(--muted); margin:-6px 0 16px 0 }
     @media (max-width:600px){
       .wrap{ padding:18px }
@@ -62,11 +65,24 @@
         <img src="images/shape_posture.png" alt="Composite visualization of Shape posture analysis measurements" loading="lazy" />
       </div>
       <p class="caption">Figure: Composite overlays from the medical posture analysis toolchain.</p>
-      <h2>Animation Retargeting Frames</h2>
-      <div class="gallery-row" aria-label="Capoeira animation frames">
-        <img src="images/shape_animation.png" alt="Sequence of animated poses retargeted onto a Shape scan" loading="lazy" />
-      </div>
-      <p class="caption">Figure: Snapshots from the interactive iOS demo showcasing Mixamo retargeting.</p>
+      <h2>Animation Retargeting Demo</h2>
+      <figure class="media" aria-label="Capoeira animation retargeted onto Shape scan">
+        <video controls playsinline preload="metadata">
+          <source src="movies/capuera_dance.mov" type="video/quicktime" />
+          <source src="movies/capuera_dance.mov" type="video/mp4" />
+          Your browser does not support embedded video. You can download it <a href="movies/capuera_dance.mov">here</a>.
+        </video>
+        <figcaption>Video: Capoeira sequence automatically retargeted to a Shape scan via our C++ rigging pipeline.</figcaption>
+      </figure>
+      <h2>iOS Demo Walkthrough</h2>
+      <figure class="media" aria-label="Shape iOS demo video">
+        <video controls playsinline preload="metadata">
+          <source src="movies/shapescale_ios.mov" type="video/quicktime" />
+          <source src="movies/shapescale_ios.mov" type="video/mp4" />
+          Your browser does not support embedded video. You can download it <a href="movies/shapescale_ios.mov">here</a>.
+        </video>
+        <figcaption>Video: Interactive ShapeScale iOS experience highlighting posture analytics and animation previews.</figcaption>
+      </figure>
       <h2>Clothing Compliance Classifier</h2>
       <p>To maintain scan fidelity, I built a residual CNN that monitors live capture sessions, prompting users to adjust clothing before the scan completes. The model integrates with the Shape backend to block exports, raising accuracy to 98.5% over baseline heuristics.</p>
     </main>
