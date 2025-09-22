@@ -14,7 +14,7 @@
     *{ box-sizing:border-box }
     body{ margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial; background:var(--bg); color:var(--text) }
     a{ color:var(--acc) }
-    .wrap{ max-width:900px; margin:auto; padding:28px }
+    .wrap{ max-width:900px; margin:auto; padding:20px }
     .card{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px }
     h1{ margin:0 0 8px 0; font-size:1.6rem }
     h2{ margin:20px 0 10px 0; font-size:1.15rem }
@@ -33,8 +33,8 @@
     .media figcaption{ font-size:.85rem; color:var(--muted); margin-top:8px }
     .caption{ font-size:.85rem; color:var(--muted); margin:-6px 0 16px 0 }
     @media (max-width:600px){
-      .wrap{ padding:18px }
-      .card{ padding:18px }
+      .wrap{ padding:14px }
+      .card{ padding:14px }
     }
   </style>
 </head>
@@ -50,16 +50,16 @@
       <div class="hero" style="margin:12px 0 18px 0">
         <img src="images/shape_posture.png" alt="Body scanner posture analysis overlays from Shape Labs" loading="lazy" />
       </div>
-      <p class="lead">Led three production pipelines for the Shape whole-body 3D scanner, spanning medical posture analytics, animation rigging, and clothing compliance checks to safeguard measurement accuracy.</p>
+      <p class="lead">Led three production pipelines for the Shape whole-body 3D scanner, spanning medical posture analytics, animation rigging, and clothing compliance checks to safeguard measurement accuracy. Detailed methods and evaluation for the posture analysis stack are documented in the <a href="documents/PostureRepport.pdf" target="_blank" rel="noopener">Posture project report</a>.</p>
+      <div class="actions" style="margin-top:0;margin-bottom:18px">
+        <a class="cta" href="documents/shapescale-recommendation-letter.pdf" target="_blank" rel="noopener">Read recommendation letter</a>
+      </div>
       <h2>Scope</h2>
       <ul>
         <li><strong>Posture analysis pipeline.</strong> Built a whole-body measurement stack that detects musculoskeletal indicators such as anterior pelvic tilt, spinal curvature, and limb pronation directly from high-resolution scans.</li>
         <li><strong>Automatic rigging for animation.</strong> Authored a C++ retargeting pipeline that fits Mixamo/gLTF skeletal hierarchies onto Shape scans, powering a realtime iOS demo for showcasing custom animations.</li>
         <li><strong>Residual network for clothing detection.</strong> Trained a ResNet50-based classifier on 60k+ images to flag non-compliant apparel and prevent corrupted body-composition reports.</li>
       </ul>
-      <div class="actions">
-        <a class="cta" href="documents/master_thesis.pdf" target="_blank" rel="noopener">Read full internship write-up</a>
-      </div>
       <h2>Posture Analytics Visuals</h2>
       <div class="gallery-row" aria-label="Posture analysis visualization">
         <img src="images/shape_posture.png" alt="Composite visualization of Shape posture analysis measurements" loading="lazy" />
