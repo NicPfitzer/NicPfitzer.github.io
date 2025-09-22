@@ -20,6 +20,7 @@
     .muted{ color:var(--muted) }
     .cta{ display:inline-block; padding:8px 12px; background:transparent; border:1px solid var(--acc); color:var(--text); border-radius:10px; text-decoration:none }
     .cta:hover{ background:rgba(56,189,248,.08) }
+    .actions{ display:flex; gap:12px; margin:12px 0; flex-wrap:wrap }
     .hero{ border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#111; }
     .hero img{ width:100%; height:auto; display:block }
   </style>
@@ -37,6 +38,9 @@
         <img src="images/cartell.png" alt="Automata-based reasoning and collaboration for robot teams" />
       </div>
       <p>LLM-guided tasking system using recurrent policies and automata execution to coordinate multi-robot behaviors from high-level language commands.</p>
+      <div class="actions">
+        <a class="cta" href="video-automata-robot-teams.html">View demo video</a>
+      </div>
       <p>Our framework, called <strong>CARTELL</strong>, distils reasoning from large language models into lightweight recurrent automata. These internal states are then used to condition graph-based policies that let robots act in real-time with only local information. The result is distributed collaboration and reasoning that runs onboard, enabling teams of robots to carry out complex multi-stage tasks from a single natural language prompt.</p>
       <div class="hero" style="margin:16px 0">
         <img src="images/cartell_framework.jpg" alt="Schematic overview of automata and GNN framework for multi-robot reasoning" />
