@@ -149,29 +149,6 @@
       });
     };
 
-    const handleWheel = (event) => {
-      if (!isHorizontal) return;
-      if (Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
-      event.preventDefault();
-      if (isAnimating) return;
-      if (event.deltaY > 0) {
-        goTo(currentIndex + 1);
-      } else if (event.deltaY < 0) {
-        goTo(currentIndex - 1);
-      }
-    };
-
-    const handleKey = (event) => {
-      if (!isHorizontal) return;
-      if (event.key === 'ArrowRight' || event.key === 'PageDown') {
-        event.preventDefault();
-        goTo(currentIndex + 1);
-      } else if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
-        event.preventDefault();
-        goTo(currentIndex - 1);
-      }
-    };
-
     const updateMode = () => {
       isHorizontal = !breakpoint.matches;
       slider.classList.toggle('is-horizontal', isHorizontal);
@@ -193,9 +170,6 @@
         }
       }
     };
-
-    slider.addEventListener('wheel', handleWheel, { passive: false });
-    slider.addEventListener('keydown', handleKey);
 
     window.addEventListener('resize', () => {
       if (!isHorizontal) return;
@@ -222,11 +196,6 @@
         if (targetIndex === -1) return;
         if (isHorizontal) {
           event.preventDefault();
-          try {
-            slider.focus({ preventScroll: true });
-          } catch (err) {
-            slider.focus();
-          }
           goTo(targetIndex);
         }
       });
