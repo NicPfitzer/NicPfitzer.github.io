@@ -84,6 +84,13 @@ header:not(.hero){display:flex;flex-wrap:wrap;gap:16px;align-items:center;justif
 [data-theme="dark"] .hero-panel nav a{color:#f8fafc;background:rgba(148,163,184,0.14);border-color:rgba(148,163,184,0.28)}
 .grid{display:grid;grid-template-columns:1fr;gap:24px}
 @media(min-width:900px){.grid{grid-template-columns:2fr 1fr;gap:24px}}
+.section-slider{position:relative;margin:24px 0 32px;scroll-behavior:smooth}
+.section-track{display:flex;flex-direction:column;gap:18px}
+.section-slider.is-horizontal{overflow:hidden}
+.section-slider.is-horizontal .section-track{flex-direction:row;gap:24px;transition:transform 0.65s cubic-bezier(.7,0,.3,1);will-change:transform}
+.section-slider.is-horizontal .section-track>section{flex:0 0 100%}
+.section-slider[data-transitioning="true"]{pointer-events:none}
+.section-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}
 section{position:relative;background:var(--card);border:1px solid var(--border);border-radius:22px;padding:24px;box-shadow:0 20px 32px var(--shadow);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);overflow:hidden;transition:background .3s ease,border .3s ease,box-shadow .3s ease}
 section::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at top,var(--glow),transparent 70%);opacity:0.14;pointer-events:none}
 section>*{position:relative;z-index:1}
