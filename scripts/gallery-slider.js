@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const slider = document.createElement('div');
   slider.className = 'gallery-slider';
   slider.style.position = 'relative';
-  slider.style.overflow = 'hidden';
+  slider.style.overflowX = 'visible';
+  slider.style.overflowY = 'visible';
   slider.style.width = '100%';
   // Height will be set dynamically based on first image aspect ratio
   slider.style.height = 'auto';
