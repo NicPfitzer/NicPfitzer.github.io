@@ -6,52 +6,28 @@
   <title>Computer Vision Projects at Shape | Project</title>
   <meta name="description" content="Posture analytics, animation rigging, and clothing detection pipelines developed for the Shape 3D body scanner." />
   <meta name="robots" content="noindex, nofollow" />
-  <meta name="color-scheme" content="dark light" />
+  <meta name="color-scheme" content="light dark" />
   <link rel="icon" href="data:," />
-  <style>
-    :root{ --bg:#0f172a; --card:#0b1220; --text:#e5e7eb; --muted:#94a3b8; --acc:#38bdf8; --border:#1e293b; }
-    [data-theme="light"]{ --bg:#ffffff; --card:#f8fafc; --text:#0f172a; --muted:#475569; --acc:#0ea5e9; --border:#e2e8f0; }
-    *{ box-sizing:border-box }
-    body{ margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial; background:var(--bg); color:var(--text) }
-    a{ color:var(--acc) }
-    .wrap{ max-width:900px; margin:auto; padding:20px }
-    .card{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px }
-    h1{ margin:0 0 8px 0; font-size:1.6rem }
-    h2{ margin:20px 0 10px 0; font-size:1.15rem }
-    .muted{ color:var(--muted) }
-    .lead{ margin:12px 0 18px 0 }
-    .hero{ border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#111; }
-    .hero img{ width:100%; height:auto; display:block }
-    .actions{ display:flex; gap:12px; margin:12px 0 20px 0; flex-wrap:wrap }
-    .cta{ display:inline-block; padding:10px 14px; background:transparent; border:1px solid var(--acc); color:var(--text); border-radius:10px; text-decoration:none }
-    .cta:hover{ background:rgba(56,189,248,.08) }
-    ul{ padding-left:20px; margin:0 0 20px 0 }
-    .gallery-row{ display:grid; gap:12px; margin:0 0 18px 0; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
-    .gallery-row img{ width:100%; height:auto; border-radius:12px; border:1px solid var(--border); background:#0b1220; object-fit:cover }
-    .media{ margin:0 0 18px 0 }
-    .media video{ width:100%; border-radius:12px; border:1px solid var(--border); background:#000; display:block }
-    .media figcaption{ font-size:.85rem; color:var(--muted); margin-top:8px }
-    .caption{ font-size:.85rem; color:var(--muted); margin:-6px 0 16px 0 }
-    @media (max-width:600px){
-      .wrap{ padding:14px }
-      .card{ padding:14px }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="themes.css" />
+  
 </head>
 <body>
-  <div class="wrap">
-    <header style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+  <div class="wrap wrap--narrow">
+    <header class="page-header">
       <a href="projects-computer-vision.html">← Back to Computer Vision</a>
       <button id="theme-toggle" class="cta" type="button" aria-pressed="false" aria-label="Toggle color theme">Toggle theme</button>
     </header>
     <main class="card">
       <h1>Computer Vision Projects at Shape</h1>
       <div class="muted">Shape Labs Inc. · San Francisco · Feb. 2024 – Aug. 2024</div>
-      <div class="hero" style="margin:12px 0 18px 0">
+      <div class="hero-media">
         <img src="images/shape_posture.png" alt="Body scanner posture analysis overlays from Shape Labs" loading="lazy" />
       </div>
       <p class="lead">Led three production pipelines for the Shape whole-body 3D scanner, spanning medical posture analytics, animation rigging, and clothing compliance checks to safeguard measurement accuracy. Detailed methods and evaluation for the posture analysis stack are documented in the <a href="documents/PostureRepport.pdf" target="_blank" rel="noopener">Posture project report</a>.</p>
-      <div class="actions" style="margin-top:0;margin-bottom:18px">
+      <div class="actions actions--compact">
         <a class="cta" href="documents/shapescale-recommendation-letter.pdf" target="_blank" rel="noopener">Read recommendation letter</a>
       </div>
       <h2>Scope</h2>
@@ -89,21 +65,21 @@
   </div>
   <script>
     (function(){
-      const root = document.documentElement;
       const btn = document.getElementById('theme-toggle');
+      const root = document.documentElement;
       const stored = localStorage.getItem('theme');
-      if (stored === 'light') root.setAttribute('data-theme','light');
-      const isLight = () => root.getAttribute('data-theme') === 'light';
-      const apply = (light) => {
-        if (light) { root.setAttribute('data-theme','light'); btn && btn.setAttribute('aria-pressed','true'); }
+      if (stored === 'dark') root.setAttribute('data-theme','dark');
+      const isDark = () => root.getAttribute('data-theme') === 'dark';
+      const apply = (dark) => {
+        if (dark) { root.setAttribute('data-theme','dark'); btn && btn.setAttribute('aria-pressed','true'); }
         else { root.removeAttribute('data-theme'); btn && btn.setAttribute('aria-pressed','false'); }
       };
       btn && btn.addEventListener('click', () => {
-        const next = !isLight();
+        const next = !isDark();
         apply(next);
-        localStorage.setItem('theme', next ? 'light' : 'dark');
+        localStorage.setItem('theme', next ? 'dark' : 'light');
       });
-      btn && btn.setAttribute('aria-pressed', String(isLight()));
+      btn && btn.setAttribute('aria-pressed', String(isDark()));
     })();
   </script>
 </body>

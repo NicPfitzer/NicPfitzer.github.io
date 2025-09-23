@@ -6,42 +6,17 @@
   <title>Projects – Computer Vision | Nicolas Pfitzer</title>
   <meta name="description" content="Computer vision and mixed‑reality projects by Nicolas Pfitzer." />
   <meta name="robots" content="noindex, nofollow" />
-  <meta name="color-scheme" content="dark light" />
+  <meta name="color-scheme" content="light dark" />
   <link rel="icon" href="data:," />
-  <style>
-    :root{ --bg:#0f172a; --card:#0b1220; --text:#e5e7eb; --muted:#94a3b8; --acc:#38bdf8; --border:#1e293b; }
-    [data-theme="light"]{ --bg:#ffffff; --card:#f8fafc; --text:#0f172a; --muted:#475569; --acc:#0ea5e9; --border:#e2e8f0; }
-    *{ box-sizing:border-box }
-    body{ margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial; background:var(--bg); color:var(--text); overflow-x:hidden }
-    a{ color:var(--acc) }
-    .wrap{ max-width:1050px; margin:auto; padding:20px }
-    .card{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px }
-    h1{ margin:0 0 8px 0; font-size:1.5rem }
-    .muted{ color:var(--muted) }
-    .cta{ display:inline-block; padding:8px 12px; background:transparent; border:1px solid var(--acc); color:var(--text); border-radius:10px; text-decoration:none }
-    .cta:hover{ background:rgba(56,189,248,.08) }
-    .gallery-slider { position: relative; width: 100%; max-width: 900px; margin: 0 auto 12px auto; }
-    .gallery-track { display: flex; transition: transform 0.5s cubic-bezier(.7,0,.3,1); height: 100%; }
-    .gallery-slider figure { margin: 0 16px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; flex: 0 0 80%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-    .gallery-slider figure a{display:flex;flex-direction:column;align-items:center;color:inherit;text-decoration:none;width:100%;height:100%}
-    .gallery-slider img { width: 100%; height: auto; max-height: 100%; object-fit: contain; background: #222; display: block; padding: 8px 0; }
-    .gallery-slider figcaption { padding: 10px; color: var(--muted); font-size: .95rem; border-top: 1px solid var(--border); text-align: center; }
-    .gallery-slider figcaption .desc { display:block; font-size:.9rem; opacity:.9; margin-top:4px; }
-    .gallery-prev, .gallery-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(15,23,42,0.7); color: #e5e7eb; border: none; font-size: 2rem; cursor: pointer; z-index: 2; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; transition: opacity 0.2s; }
-    .gallery-prev { left: 0; }
-    .gallery-next { right: 0; }
-    .gallery-prev[disabled], .gallery-next[disabled] { opacity: 0.3; cursor: default; }
-    @media (max-width: 600px){
-      .wrap{padding:14px}
-      .gallery-slider figure{flex:0 0 100%; margin:0 8px}
-      .gallery-prev, .gallery-next{width:32px;height:32px;font-size:1.6rem}
-      .gallery-slider img{padding:4px 0}
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="themes.css" />
+  
 </head>
 <body>
   <div class="wrap">
-    <header style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+    <header class="page-header">
       <a href="index.html">← Back to home</a>
       <button id="theme-toggle" class="cta" type="button" aria-pressed="false" aria-label="Toggle color theme">Toggle theme</button>
     </header>
@@ -73,21 +48,21 @@
   <script src="gallery-slider.js"></script>
   <script>
     (function(){
-      const root = document.documentElement;
       const btn = document.getElementById('theme-toggle');
+      const root = document.documentElement;
       const stored = localStorage.getItem('theme');
-      if (stored === 'light') root.setAttribute('data-theme','light');
-      const isLight = () => root.getAttribute('data-theme') === 'light';
-      const apply = (light) => {
-        if (light) { root.setAttribute('data-theme','light'); btn && btn.setAttribute('aria-pressed','true'); }
+      if (stored === 'dark') root.setAttribute('data-theme','dark');
+      const isDark = () => root.getAttribute('data-theme') === 'dark';
+      const apply = (dark) => {
+        if (dark) { root.setAttribute('data-theme','dark'); btn && btn.setAttribute('aria-pressed','true'); }
         else { root.removeAttribute('data-theme'); btn && btn.setAttribute('aria-pressed','false'); }
       };
       btn && btn.addEventListener('click', () => {
-        const next = !isLight();
+        const next = !isDark();
         apply(next);
-        localStorage.setItem('theme', next ? 'light' : 'dark');
+        localStorage.setItem('theme', next ? 'dark' : 'light');
       });
-      btn && btn.setAttribute('aria-pressed', String(isLight()));
+      btn && btn.setAttribute('aria-pressed', String(isDark()));
     })();
   </script>
 </body>
