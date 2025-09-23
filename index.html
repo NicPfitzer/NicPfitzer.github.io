@@ -37,7 +37,7 @@
       background-image:url('images/header/header.jpg');
       background-size:cover;background-position:center;color:#ffffff;display:flex;justify-content:center;margin-bottom:32px;
       border:1px solid rgba(148,163,184,0.2);box-shadow:0 30px 60px rgba(15,23,42,0.4)}
-    header.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(15,23,42,0.82),rgba(15,23,42,0.55) 45%,rgba(15,23,42,0.78));z-index:0}
+    header.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(15,23,42,0.45),rgba(15,23,42,0.18) 45%,rgba(15,23,42,0.45));z-index:0}
     header.hero h1{color:#ffffff;text-shadow:0 1px 3px rgba(8,11,20,.5);font-family:'Plus Jakarta Sans','Inter',sans-serif;font-weight:700;letter-spacing:-0.01em}
     header.hero .sub, header.hero .badge{color:#e2e8f0;opacity:.92}
     header.hero a{color:#ffffff}
@@ -60,9 +60,11 @@
     .sub{color:var(--muted)}
     nav a{color:var(--text);text-decoration:none;padding:8px 12px;border:1px solid var(--border);border-radius:999px}
     nav a:hover{border-color:var(--acc)}
-    .grid{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:900px){.grid{grid-template-columns:2fr 1fr}}
-    section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px}
+    .grid{display:grid;grid-template-columns:1fr;gap:24px}
+    @media(min-width:900px){.grid{grid-template-columns:2fr 1fr;gap:24px}}
+    section{position:relative;background:rgba(11,18,32,0.88);border:1px solid rgba(148,163,184,0.18);border-radius:22px;padding:24px;box-shadow:0 18px 40px rgba(8,11,20,0.28);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);overflow:hidden}
+    section::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at top,rgba(56,189,248,0.12),transparent 60%);opacity:0.25;pointer-events:none}
+    section > *{position:relative;z-index:1}
     h2{margin:0 0 12px 0;font-size:1.15rem;letter-spacing:.2px}
     .item{margin-bottom:14px}
     .item:last-child{margin-bottom:0}

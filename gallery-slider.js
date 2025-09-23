@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!gallery) return;
   const figures = Array.from(gallery.children);
   let current = 0;
+  const HEIGHT_BUFFER = 16;
 
   // Create slider container
   const slider = document.createElement('div');
@@ -97,8 +98,9 @@ document.addEventListener('DOMContentLoaded', function () {
   function setHeightToCurrent() {
     const fig = figures[current];
     if (!fig) return;
+    slider.style.height = 'auto';
     const h = fig.offsetHeight;
-    if (h > 0) slider.style.height = (h + 16) + 'px';
+    if (h > 0) slider.style.height = (h + HEIGHT_BUFFER) + 'px';
   }
 
   function observeCurrentFigure() {
