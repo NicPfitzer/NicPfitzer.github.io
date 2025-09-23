@@ -176,7 +176,11 @@
       }, 150);
     });
 
-    breakpoint.addEventListener('change', updateMode);
+    if (typeof breakpoint.addEventListener === 'function') {
+      breakpoint.addEventListener('change', updateMode);
+    } else if (typeof breakpoint.addListener === 'function') {
+      breakpoint.addListener(updateMode);
+    }
 
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
     navLinks.forEach((link) => {
