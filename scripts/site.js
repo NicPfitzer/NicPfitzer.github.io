@@ -84,7 +84,7 @@
       }
       const active = slides[currentIndex];
       if (active) {
-        const targetHeight = active.scrollHeight;
+        const targetHeight = active.offsetHeight;
         const isSmooth = slider.hasAttribute('data-transitioning') || isAnimating;
         if (isSmooth) {
           slider.style.transition = 'height 0.6s cubic-bezier(.7,0,.3,1)';

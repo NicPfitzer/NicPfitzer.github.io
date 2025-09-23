@@ -87,7 +87,7 @@ header:not(.hero){display:flex;flex-wrap:wrap;gap:16px;align-items:center;justif
 .section-slider{position:relative;margin:24px 0 32px;scroll-behavior:smooth}
 .section-track{display:flex;flex-direction:column;gap:18px}
 .section-slider.is-horizontal{overflow:hidden}
-.section-slider.is-horizontal .section-track{flex-direction:row;gap:24px;transition:transform 0.65s cubic-bezier(.7,0,.3,1);will-change:transform}
+.section-slider.is-horizontal .section-track{flex-direction:row;gap:24px;transition:transform 0.65s cubic-bezier(.7,0,.3,1);will-change:transform;align-items:flex-start}
 .section-slider.is-horizontal .section-track>section{flex:0 0 100%}
 .section-slider[data-transitioning="true"]{pointer-events:none}
 .section-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}
