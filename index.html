@@ -241,29 +241,8 @@
       © <span id="y"></span> Nicolas Pfitzer
     </footer>
   </div>
-  <script src="gallery-slider.js"></script>
-  <script>
-    // Year badge
-    document.getElementById('y').textContent = new Date().getFullYear();
-    // Theme toggle with localStorage persistence
-    (function(){
-      const btn = document.getElementById('theme-toggle');
-      const root = document.documentElement;
-      const stored = localStorage.getItem('theme');
-      if (stored === 'dark') root.setAttribute('data-theme','dark');
-      const isDark = () => root.getAttribute('data-theme') === 'dark';
-      const apply = (dark) => {
-        if (dark) { root.setAttribute('data-theme','dark'); btn.setAttribute('aria-pressed','true'); }
-        else { root.removeAttribute('data-theme'); btn.setAttribute('aria-pressed','false'); }
-      };
-      btn.addEventListener('click', () => {
-        const next = !isDark();
-        apply(next);
-        localStorage.setItem('theme', next ? 'dark' : 'light');
-      });
-      btn.setAttribute('aria-pressed', String(isDark()));
-    })();
-  </script>
+  <script src="scripts/gallery-slider.js" defer></script>
+  <script src="scripts/site.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -279,5 +258,5 @@
     ]
   }
   </script>
-  </body>
+</body>
 </html>

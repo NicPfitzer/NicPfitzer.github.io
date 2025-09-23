@@ -26,24 +26,6 @@
       <p class="empty">Gallery coming soon.</p>
     </main>
   </div>
-  <script>
-    (function(){
-      const btn = document.getElementById('theme-toggle');
-      const root = document.documentElement;
-      const stored = localStorage.getItem('theme');
-      if (stored === 'dark') root.setAttribute('data-theme','dark');
-      const isDark = () => root.getAttribute('data-theme') === 'dark';
-      const apply = (dark) => {
-        if (dark) { root.setAttribute('data-theme','dark'); btn && btn.setAttribute('aria-pressed','true'); }
-        else { root.removeAttribute('data-theme'); btn && btn.setAttribute('aria-pressed','false'); }
-      };
-      btn && btn.addEventListener('click', () => {
-        const next = !isDark();
-        apply(next);
-        localStorage.setItem('theme', next ? 'dark' : 'light');
-      });
-      btn && btn.setAttribute('aria-pressed', String(isDark()));
-    })();
-  </script>
+  <script src="scripts/site.js" defer></script>
 </body>
 </html>
