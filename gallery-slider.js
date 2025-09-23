@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const fig = figures[current];
     if (!fig) return;
     const h = fig.offsetHeight;
-    if (h > 0) slider.style.height = h + 'px';
+    if (h > 0) slider.style.height = (h + 16) + 'px';
   }
 
   function observeCurrentFigure() {
