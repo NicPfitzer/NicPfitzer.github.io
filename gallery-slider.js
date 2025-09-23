@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
   track.style.display = 'flex';
   track.style.transition = 'transform 0.5s cubic-bezier(.7,0,.3,1)';
   track.style.height = '100%';
+  track.style.alignItems = 'flex-start';
 
   // Move figures into track
   figures.forEach(fig => {

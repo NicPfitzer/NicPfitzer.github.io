@@ -16,6 +16,9 @@
   <meta name="twitter:description" content="Robotics and ML engineer focused on RL, vision, and embedded systems." />
   <meta name="twitter:image" content="images/avatar.jpg" />
   <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="images/cartell.png" />
   <style>
     :root{
@@ -25,27 +28,35 @@
       --bg:#ffffff; --card:#f8fafc; --text:#0f172a; --muted:#475569; --acc:#0ea5e9; --border:#e2e8f0;
     }
     *{box-sizing:border-box}
-    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;background:var(--bg);color:var(--text);overflow-x:hidden}
+    body{margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.65;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
     a{color:var(--acc)}
     .wrap{max-width:1050px;margin:auto;padding:20px}
-    header{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:28px}
+    header:not(.hero){display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:28px}
     /* Hero header with background image */
-    header.hero{position:relative;padding:20px;border:1px solid var(--border);border-radius:16px;overflow:hidden;
-      background-image:linear-gradient(90deg, rgba(15,23,42,0.75) 0%, rgba(15,23,42,0.45) 45%, rgba(15,23,42,0.75) 100%), url('images/header/header.jpg');
-      background-size:cover;background-position:center;color:#ffffff}
-    header.hero h1{color:#ffffff;text-shadow:0 1px 2px rgba(0,0,0,.6)}
-    header.hero .sub, header.hero .badge{color:#f1f5f9;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+    header.hero{position:relative;padding:32px;border-radius:28px;overflow:hidden;
+      background-image:url('images/header/header.jpg');
+      background-size:cover;background-position:center;color:#ffffff;display:flex;justify-content:center;margin-bottom:32px;
+      border:1px solid rgba(148,163,184,0.2);box-shadow:0 30px 60px rgba(15,23,42,0.4)}
+    header.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(15,23,42,0.82),rgba(15,23,42,0.55) 45%,rgba(15,23,42,0.78));z-index:0}
+    header.hero h1{color:#ffffff;text-shadow:0 1px 3px rgba(8,11,20,.5);font-family:'Plus Jakarta Sans','Inter',sans-serif;font-weight:700;letter-spacing:-0.01em}
+    header.hero .sub, header.hero .badge{color:#e2e8f0;opacity:.92}
     header.hero a{color:#ffffff}
-    header.hero nav a{background:rgba(0,0,0,.24); color:#ffffff}
+    .hero-panel{position:relative;z-index:1;display:flex;flex-direction:column;gap:18px;width:100%;max-width:960px;background:rgba(15,23,42,0.55);border:1px solid rgba(148,163,184,0.22);border-radius:24px;padding:28px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 20px 60px rgba(8,11,20,0.35)}
+    .hero-top{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    .hero-top .badge{margin-top:6px;font-size:.9rem}
+    .hero-panel nav{display:flex;flex-wrap:wrap;gap:10px}
+    .hero-panel nav a{background:rgba(148,163,184,0.14); color:#f8fafc;border:1px solid rgba(148,163,184,0.28);padding:8px 14px;border-radius:999px;box-shadow:0 10px 20px rgba(8,11,20,0.18);transition:all .2s ease}
+    .hero-panel nav a:hover{border-color:rgba(255,255,255,0.6);background:rgba(148,163,184,0.24);box-shadow:0 14px 26px rgba(8,11,20,0.28)}
     @media (max-width:600px){
-      header.hero{padding:14px; display:block}
-      header.hero .id{margin-bottom:8px}
-      header.hero nav{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px}
-      header.hero nav a{margin-top:0; padding:6px 10px}
-      header.hero #theme-toggle{margin-top:10px}
+      header.hero{padding:18px;margin-bottom:24px}
+      .hero-panel{padding:22px}
+      .hero-top{flex-direction:column;align-items:flex-start}
+      .hero-panel nav{gap:8px}
+      .hero-panel nav a{padding:6px 12px}
+      header.hero #theme-toggle{align-self:flex-start}
     }
     .id{display:flex;gap:16px;align-items:center}
-    h1{margin:0;font-size:1.9rem;line-height:1.2}
+    h1{margin:0;font-size:2.05rem;line-height:1.18;font-family:'Plus Jakarta Sans','Inter',sans-serif;font-weight:700;letter-spacing:-0.01em}
     .sub{color:var(--muted)}
     nav a{color:var(--text);text-decoration:none;padding:8px 12px;border:1px solid var(--border);border-radius:999px}
     nav a:hover{border-color:var(--acc)}
@@ -60,8 +71,10 @@
     .meta{color:var(--muted)}
     ul{margin:8px 0 0 18px}
     .tag{display:inline-block;margin:6px 6px 0 0;padding:6px 10px;border:1px solid var(--border);border-radius:999px;color:var(--muted)}
-    .cta{display:inline-block;margin-top:12px;padding:10px 14px;background:transparent;border:1px solid var(--acc);color:var(--text);border-radius:10px;text-decoration:none}
-    .cta:hover{background:rgba(56,189,248,.08)}
+    .cta{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:10px 16px;background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.55);color:var(--text);border-radius:12px;text-decoration:none;transition:all .2s ease}
+    .cta:hover{background:rgba(56,189,248,0.22);border-color:rgba(56,189,248,0.85);box-shadow:0 12px 30px rgba(8,11,20,0.22)}
+    .hero-panel .cta{margin-top:0;font-weight:600;color:#0ea5e9;background:rgba(14,165,233,0.14);border-color:rgba(125,211,252,0.45)}
+    .hero-panel .cta:hover{color:#38bdf8;background:rgba(14,165,233,0.22)}
     footer{color:var(--muted);text-align:center;margin:28px 0 8px}
     .badge{font-size:.85rem;color:var(--muted)}
     .avatar{width:72px;height:72px;border-radius:50%;background:#222;border:1px solid var(--border);object-fit:cover}
@@ -86,7 +99,7 @@
   .gallery-prev[disabled], .gallery-next[disabled] { opacity: 0.3; cursor: default; }
   @media (max-width: 600px){
     .wrap{padding:14px}
-    header{gap:12px}
+    header:not(.hero){gap:12px}
     nav a{padding:6px 10px; margin-top:6px}
     .gallery-slider figure{flex:0 0 100%; margin:0 8px; border-radius:12px}
     .gallery-prev, .gallery-next{width:32px; height:32px; font-size:1.6rem}
@@ -109,28 +122,32 @@
   <a href="#about" class="skip-link">Skip to content</a>
   <div class="wrap">
     <header class="hero">
-      <div class="id">
-        <img class="avatar" src="images/avatar.jpg" alt="Portrait of Nicolas Pfitzer" width="72" height="72" />
-        <div>
-          <h1>Nicolas Pfitzer</h1>
-          <div class="sub">Robotics and ML Engineer • Cambridge, United Kingdom</div>
-          <div class="sub">
-            <a href="mailto:nicolas@pfitzer.org">nicolas@pfitzer.org</a>
-            • <a href="https://linkedin.com/in/nicolas-pfitzer">LinkedIn</a>
-            • <a href="https://github.com/NicPfitzer">GitHub</a>
+      <div class="hero-panel">
+        <div class="hero-top">
+          <div class="id">
+            <img class="avatar" src="images/avatar.jpg" alt="Portrait of Nicolas Pfitzer" width="72" height="72" />
+            <div>
+              <h1>Nicolas Pfitzer</h1>
+              <div class="sub">Robotics and ML Engineer • Cambridge, United Kingdom</div>
+              <div class="sub">
+                <a href="mailto:nicolas@pfitzer.org">nicolas@pfitzer.org</a>
+                • <a href="https://linkedin.com/in/nicolas-pfitzer">LinkedIn</a>
+                • <a href="https://github.com/NicPfitzer">GitHub</a>
+              </div>
+              <div class="badge">Swiss & US citizen • Last updated: September 2025</div>
+            </div>
           </div>
-          <div class="badge">Swiss & US citizen • Last updated: September 2025</div>
+          <button id="theme-toggle" class="cta" type="button" aria-pressed="false" aria-label="Toggle color theme">Toggle theme</button>
         </div>
+        <nav aria-label="Primary">
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
+          <a href="#publications">Publications</a>
+          <a href="documents/cv.pdf" download>Download CV (PDF)</a>
+        </nav>
       </div>
-      <nav aria-label="Primary">
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#publications">Publications</a>
-        <a href="documents/cv.pdf" download>Download CV (PDF)</a>
-      </nav>
-      <button id="theme-toggle" class="cta" type="button" aria-pressed="false" aria-label="Toggle color theme">Toggle theme</button>
     </header>
 
     <div class="grid">
