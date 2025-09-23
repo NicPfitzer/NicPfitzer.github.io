@@ -52,6 +52,7 @@
   const slides = track ? Array.from(track.children) : [];
 
   if (slider && track && slides.length > 0) {
+    const initialHash = window.location.hash;
     let currentIndex = 0;
     let isHorizontal = false;
     let isAnimating = false;
@@ -123,6 +124,7 @@
     const applyIndex = (index, updateHash = true) => {
       if (!isHorizontal) return;
       currentIndex = index;
+      if (!offsets.length) computeOffsets();
       const offset = offsets[index] || 0;
       track.style.transform = `translateX(-${offset}px)`;
       setHeight();
@@ -207,6 +209,7 @@
       const targetIndex = slides.findIndex((slide) => slide.id === id);
       if (targetIndex === -1) return;
       if (isHorizontal) {
+        if (!offsets.length) computeOffsets();
         goTo(targetIndex, !viaNav);
       } else {
         slides[targetIndex].scrollIntoView({ behavior: viaNav ? 'smooth' : 'auto', block: 'start' });
@@ -218,12 +221,14 @@
     });
 
     updateMode();
-    if (window.location.hash) {
-      scrollToHash(window.location.hash);
-    } else {
-      if (isHorizontal) {
-        announce();
-      }
+    if (initialHash) {
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          scrollToHash(initialHash);
+        });
+      });
+    } else if (isHorizontal) {
+      announce();
     }
   }
 })();
