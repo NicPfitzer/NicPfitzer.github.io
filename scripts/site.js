@@ -58,6 +58,7 @@
     let offsets = [];
     let resizeTimer = 0;
     let hasInteracted = Boolean(window.location.hash);
+    let resizeObserver = null;
 
     const breakpoint = window.matchMedia('(max-width: 900px)');
 
@@ -83,10 +84,24 @@
       }
       const active = slides[currentIndex];
       if (active) {
-        const targetHeight = active.offsetHeight;
+        const targetHeight = active.scrollHeight;
         if (targetHeight > 0) {
           slider.style.height = `${targetHeight}px`;
         }
+      }
+    };
+
+    const observeActive = () => {
+      if (!('ResizeObserver' in window)) return;
+      if (!resizeObserver) {
+        resizeObserver = new ResizeObserver(() => {
+          window.requestAnimationFrame(setHeight);
+        });
+      }
+      resizeObserver.disconnect();
+      const active = slides[currentIndex];
+      if (active) {
+        resizeObserver.observe(active);
       }
     };
 
@@ -106,6 +121,7 @@
       if (updateHash) {
         setHashSilently(slides[index]?.id || '');
       }
+      observeActive();
     };
 
     const goTo = (index, updateHash = true) => {
@@ -161,6 +177,9 @@
         });
       } else if (announcer) {
         announcer.textContent = '';
+        if (resizeObserver) {
+          resizeObserver.disconnect();
+        }
       }
     };
 
