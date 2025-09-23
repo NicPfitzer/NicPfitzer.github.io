@@ -85,8 +85,17 @@
       const active = slides[currentIndex];
       if (active) {
         const targetHeight = active.scrollHeight;
-        if (targetHeight > 0) {
-          slider.style.height = `${targetHeight}px`;
+        const isSmooth = slider.hasAttribute('data-transitioning') || isAnimating;
+        if (isSmooth) {
+          slider.style.transition = 'height 0.6s cubic-bezier(.7,0,.3,1)';
+        } else {
+          slider.style.transition = '';
+        }
+        slider.style.height = targetHeight > 0 ? `${targetHeight}px` : 'auto';
+        if (isSmooth) {
+          window.setTimeout(() => {
+            slider.style.transition = '';
+          }, 620);
         }
       }
     };
@@ -175,8 +184,10 @@
           computeOffsets();
           applyIndex(currentIndex, hasInteracted);
         });
-      } else if (announcer) {
-        announcer.textContent = '';
+      } else {
+        slider.style.transition = '';
+        slider.style.height = 'auto';
+        if (announcer) announcer.textContent = '';
         if (resizeObserver) {
           resizeObserver.disconnect();
         }
