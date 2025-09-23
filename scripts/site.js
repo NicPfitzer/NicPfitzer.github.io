@@ -54,14 +54,12 @@
   if (slider && track && slides.length > 0) {
     const initialHash = window.location.hash;
     let currentIndex = 0;
-    let isHorizontal = false;
+    let isHorizontal = true;
     let isAnimating = false;
     let offsets = [];
     let resizeTimer = 0;
     let hasInteracted = Boolean(window.location.hash);
     let resizeObserver = null;
-
-    const breakpoint = window.matchMedia('(max-width: 900px)');
 
     const setHashSilently = (id) => {
       if (!id) return;
@@ -85,7 +83,8 @@
       }
       const active = slides[currentIndex];
       if (active) {
-        const targetHeight = active.offsetHeight;
+        const buffer = 16;
+        const targetHeight = active.offsetHeight + buffer;
         const isSmooth = slider.hasAttribute('data-transitioning') || isAnimating;
         if (isSmooth) {
           slider.style.transition = 'height 0.6s cubic-bezier(.7,0,.3,1)';
@@ -152,25 +151,15 @@
     };
 
     const updateMode = () => {
-      isHorizontal = !breakpoint.matches;
-      slider.classList.toggle('is-horizontal', isHorizontal);
+      slider.classList.add('is-horizontal');
       track.style.transform = '';
       slider.style.height = 'auto';
       slider.removeAttribute('data-transitioning');
       isAnimating = false;
-      if (isHorizontal) {
-        window.requestAnimationFrame(() => {
-          computeOffsets();
-          applyIndex(currentIndex, hasInteracted);
-        });
-      } else {
-        slider.style.transition = '';
-        slider.style.height = 'auto';
-        if (announcer) announcer.textContent = '';
-        if (resizeObserver) {
-          resizeObserver.disconnect();
-        }
-      }
+      window.requestAnimationFrame(() => {
+        computeOffsets();
+        applyIndex(currentIndex, hasInteracted);
+      });
     };
 
     window.addEventListener('resize', () => {
@@ -181,12 +170,6 @@
         applyIndex(currentIndex);
       }, 150);
     });
-
-    if (typeof breakpoint.addEventListener === 'function') {
-      breakpoint.addEventListener('change', updateMode);
-    } else if (typeof breakpoint.addListener === 'function') {
-      breakpoint.addListener(updateMode);
-    }
 
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
     navLinks.forEach((link) => {
