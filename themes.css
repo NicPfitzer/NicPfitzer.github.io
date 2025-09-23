@@ -1,7 +1,7 @@
 :root{
   --bg:#f3f6ff;
-  --card:rgba(255,255,255,0.98);
-  --glass:rgba(255,255,255,0.92);
+  --card:rgba(255,255,255,0.88);
+  --glass:rgba(255,255,255,0.8);
   --text:#0f172a;
   --muted:#475569;
   --acc:#2563eb;
@@ -11,8 +11,8 @@
 }
 [data-theme="dark"]{
   --bg:#0f172a;
-  --card:rgba(11,18,32,0.36);
-  --glass:rgba(15,23,42,0.12);
+  --card:rgba(11,18,32,0.52);
+  --glass:rgba(15,23,42,0.28);
   --text:#e5e7eb;
   --muted:#94a3b8;
   --acc:#38bdf8;
@@ -65,11 +65,11 @@ header:not(.hero){display:flex;flex-wrap:wrap;gap:16px;align-items:center;justif
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(120deg,rgba(243,246,255,0.72),rgba(243,246,255,0.38) 45%,rgba(243,246,255,0.65));
+  background:linear-gradient(130deg,rgba(243,246,255,0.28),rgba(243,246,255,0.12) 55%,rgba(243,246,255,0.24));
   z-index:0;
 }
 [data-theme="dark"] .hero::after{
-  background:linear-gradient(120deg,rgba(15,23,42,0.05),rgba(15,23,42,0.01) 45%,rgba(15,23,42,0.05));
+  background:linear-gradient(130deg,rgba(15,23,42,0.38),rgba(15,23,42,0.12) 55%,rgba(15,23,42,0.32));
 }
 .hero h1{color:var(--text);font-family:'Plus Jakarta Sans','Inter',sans-serif;font-weight:700;letter-spacing:-0.01em;text-shadow:none}
 [data-theme="dark"] .hero h1{color:#ffffff;text-shadow:0 1px 3px rgba(8,11,20,0.5)}
