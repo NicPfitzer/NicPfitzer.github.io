@@ -116,8 +116,23 @@
 
     const computeOffsets = () => {
       if (!isHorizontal) return;
-      offsets = slides.map((slide) => slide.offsetLeft);
+      const gap = parseFloat(window.getComputedStyle(track).columnGap || window.getComputedStyle(track).gap || '0') || 0;
+      let running = 0;
+      offsets = slides.map((slide, idx) => {
+        if (idx === 0) {
+          running = 0;
+          return 0;
+        }
+        running += slides[idx - 1].offsetWidth + gap;
+        return running;
+      });
       setHeight();
+    };
+
+    const syncToIndex = (index, updateHash = true) => {
+      if (!isHorizontal) return;
+      if (!offsets.length) computeOffsets();
+      applyIndex(index, updateHash);
     };
 
     const applyIndex = (index, updateHash = true) => {
@@ -136,6 +151,7 @@
 
     const goTo = (index, updateHash = true) => {
       if (!isHorizontal) return;
+      if (!offsets.length) computeOffsets();
       const nextIndex = Math.max(0, Math.min(slides.length - 1, index));
       if (nextIndex === currentIndex || isAnimating) return;
       isAnimating = true;
@@ -157,8 +173,10 @@
       slider.removeAttribute('data-transitioning');
       isAnimating = false;
       window.requestAnimationFrame(() => {
-        computeOffsets();
-        applyIndex(currentIndex, hasInteracted);
+        window.requestAnimationFrame(() => {
+          computeOffsets();
+          applyIndex(currentIndex, hasInteracted);
+        });
       });
     };
 
@@ -204,14 +222,37 @@
     });
 
     updateMode();
+    const finalizeInitial = () => {
+      if (initialHash) {
+        syncToIndex(Math.max(0, slides.findIndex(slide => slide.id === initialHash.replace('#', ''))), false);
+      } else if (isHorizontal) {
+        announce();
+      }
+    };
+
+    const readyCallbacks = [];
+    if (typeof document !== 'undefined' && document.readyState !== 'complete') {
+      readyCallbacks.push(new Promise(resolve => {
+        window.addEventListener('load', resolve, { once: true });
+      }));
+    }
+    if (document.fonts && document.fonts.ready) {
+      readyCallbacks.push(document.fonts.ready.catch(() => {}));
+    }
+
+    Promise.all(readyCallbacks).finally(() => {
+      window.requestAnimationFrame(() => {
+        computeOffsets();
+        finalizeInitial();
+      });
+    });
+
     if (initialHash) {
       window.requestAnimationFrame(() => {
         window.requestAnimationFrame(() => {
           scrollToHash(initialHash);
         });
       });
-    } else if (isHorizontal) {
-      announce();
     }
   }
 })();
