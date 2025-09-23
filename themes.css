@@ -32,7 +32,13 @@ body{
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
   transition:background .3s ease,color .3s ease;
+  position:relative;
+  min-height:100vh;
 }
+body::before{content:"";position:fixed;inset:0;background:url('images/header/background.jpg') center/cover no-repeat;filter:blur(24px);transform:scale(1.05);z-index:-2;pointer-events:none;opacity:.85}
+body::after{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(243,246,255,0.72),rgba(243,246,255,0.88));z-index:-1;pointer-events:none;opacity:.88;transition:background .3s ease,opacity .3s ease}
+[data-theme="dark"] body::after{background:linear-gradient(180deg,rgba(15,23,42,0.82),rgba(15,23,42,0.94));opacity:.92}
+[data-theme="dark"] body::before{opacity:.75;filter:blur(24px) brightness(.65)}
 a{color:var(--acc)}
 .wrap{max-width:1050px;margin:auto;padding:24px}
 .wrap--narrow{max-width:900px}
@@ -96,6 +102,10 @@ section+section{margin-top:18px}
 ul{margin:8px 0 0 18px}
 .tag{display:inline-block;margin:6px 6px 0 0;padding:6px 10px;border:1px solid rgba(148,163,184,0.35);border-radius:999px;color:var(--muted);background:rgba(255,255,255,0.9)}
 [data-theme="dark"] .tag{color:#e2e8f0;background:rgba(148,163,184,0.15);border-color:rgba(148,163,184,0.35)}
+.edu{display:flex;gap:14px;align-items:flex-start}
+.edu-logo{flex:0 0 auto;width:42px;height:42px;display:flex;align-items:center;justify-content:center}
+.edu-logo img{width:100%;height:auto;max-height:100%;display:block;object-fit:contain}
+.edu-logos{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
 .cta{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:10px 16px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.24);color:var(--text);border-radius:12px;text-decoration:none;transition:all .2s ease}
 .cta:hover{background:rgba(37,99,235,0.18);border-color:rgba(37,99,235,0.38);box-shadow:0 12px 30px rgba(37,99,235,0.22);color:var(--acc)}
 [data-theme="dark"] .cta{background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.35);color:#e5e7eb}
