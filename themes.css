@@ -121,6 +121,7 @@ section+section{margin-top:18px}
 .row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:flex-start;gap:12px}
 .role{font-weight:600;color:var(--text)}
 .meta{color:var(--muted);text-align:right;white-space:nowrap}
+.edu .meta{margin-top:4px;text-align:left;white-space:normal}
 ul{margin:8px 0 0 18px}
 .tag{display:inline-block;margin:6px 6px 0 0;padding:6px 10px;border:1px solid rgba(148,163,184,0.35);border-radius:999px;color:var(--muted);background:rgba(255,255,255,0.9)}
 [data-theme="dark"] .tag{color:#e2e8f0;background:rgba(148,163,184,0.15);border-color:rgba(148,163,184,0.35)}
