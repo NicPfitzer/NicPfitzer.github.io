@@ -124,10 +124,11 @@ section+section{margin-top:18px}
 ul{margin:8px 0 0 18px}
 .tag{display:inline-block;margin:6px 6px 0 0;padding:6px 10px;border:1px solid rgba(148,163,184,0.35);border-radius:999px;color:var(--muted);background:rgba(255,255,255,0.9)}
 [data-theme="dark"] .tag{color:#e2e8f0;background:rgba(148,163,184,0.15);border-color:rgba(148,163,184,0.35)}
-.edu{display:flex;gap:14px;align-items:flex-start}
-.edu-logo{flex:0 0 auto;width:48px;height:48px;display:flex;align-items:center;justify-content:center;padding:6px;border-radius:14px;background:rgba(255,255,255,0.95);border:1px solid rgba(148,163,184,0.3);box-shadow:0 10px 18px rgba(15,23,42,0.08)}
-[data-theme="dark"] .edu-logo{background:rgba(255,255,255,0.96);border-color:rgba(148,163,184,0.4);box-shadow:0 12px 20px rgba(8,11,20,0.6)}
-.edu-logo img{width:100%;height:auto;max-height:100%;display:block;object-fit:contain}
+.edu,.exp{display:flex;gap:14px;align-items:flex-start}
+.edu-logo,.exp-logo{flex:0 0 auto;width:48px;height:48px;display:flex;align-items:center;justify-content:center;padding:6px;border-radius:14px;background:rgba(255,255,255,0.95);border:1px solid rgba(148,163,184,0.3);box-shadow:0 10px 18px rgba(15,23,42,0.08)}
+[data-theme="dark"] .edu-logo,[data-theme="dark"] .exp-logo{background:rgba(255,255,255,0.96);border-color:rgba(148,163,184,0.4);box-shadow:0 12px 20px rgba(8,11,20,0.6)}
+.edu-logo img,.exp-logo img{width:100%;height:auto;max-height:100%;display:block;object-fit:contain}
+.exp-body{flex:1}
 .edu-logos{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
 .cta{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:10px 16px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.24);color:var(--text);border-radius:12px;text-decoration:none;transition:all .2s ease}
 .cta:hover{background:rgba(37,99,235,0.18);border-color:rgba(37,99,235,0.38);box-shadow:0 12px 30px rgba(37,99,235,0.22);color:var(--acc)}
